@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-
 const app = express();
 
 // Enable CORS
@@ -19,7 +18,8 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
   const fullPath = req.path; // Get the dynamic path
   const query = new URLSearchParams(req.query).toString();
-  const deepLink = `fldeeplink://${fullPath}${query ? `?${query}` : ""}`;
+  // const deepLink = `fldeeplink://${fullPath}${query ? `?${query}` : ""}`;
+  const deepLink = `${fullPath}${query ? `?${query}` : ""}`;
 
   console.log(`Redirecting to deep link: ${deepLink}`);
   res.redirect(deepLink);
