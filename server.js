@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 
 // Serve assetlinks.json inside .well-known directory
-// app.use("/.well-known", express.static(path.join(__dirname, "public/.well-known")));
+app.use("/.well-known", express.static(path.join(__dirname, "public/.well-known")));
 
 // Root route
 app.get("/", (req, res) => {
@@ -22,6 +22,7 @@ app.get("*", (req, res) => {
   const deepLink = `fldeeplink://${fullPath}${query ? `?${query}` : ""}`;
 
   console.log(`Redirecting to deep link: ${deepLink}`);
+  res.send(deepLink);
   res.redirect(deepLink);
 });
 
