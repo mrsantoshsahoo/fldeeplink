@@ -22,7 +22,6 @@ app.get("*", (req, res) => {
   const deepLink = `fldeeplink://${fullPath}${query ? `?${query}` : ""}`;
 
   console.log(`Redirecting to deep link: ${deepLink}`);
-  res.send(deepLink);
   res.redirect(deepLink);
 });
 
